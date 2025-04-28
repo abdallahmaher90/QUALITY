@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تقرير تسجيل OVR - مديرية الشئون الصحية بكفر الشيخ</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+    body { font-family: 'Tajawal', sans-serif; }
+    .card { transition: all 0.3s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .slide { display: none; }
+    .active-slide { display: block; }
+    .tab-btn.active { 
+      background-color: #1a365d; 
+      color: white;
+      font-weight: bold;
+    }
+    .header {
+      background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      height: 80px;
+      margin-left: 1rem;
+    }
+    .section-title {
+      border-right: 4px solid #2b6cb0;
+      padding-right: 1rem;
+      margin: 1.5rem 0;
+      color: #2b6cb0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .badge-primary {
+      background-color: #ebf8ff;
+      color: #2b6cb0;
+    }
+    .badge-success {
+      background-color: #f0fff4;
+      color: #2f855a;
+    }
+    .badge-warning {
+      background-color: #fffaf0;
+      color: #c05621;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="container mx-auto px-4 py-8">
+    <!-- الديباجة الرسمية -->
+    <div class="header flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold">مديرية الشئون الصحية بكفر الشيخ</h1>
+        <p class="text-lg md:text-xl mt-2">إدارة سلامة المرضى - تقرير الربع الأول 2025</p>
+      </div>
+      <img src="https://via.placeholder.com/80x80?text=شعار" alt="شعار المديرية" class="logo hidden md:block">
+    </div>
+
+    <!-- شريط التنقل بين الشرائح -->
+    <div class="flex flex-wrap justify-center mb-8 gap-2">
+      <button onclick="showSlide(1)" class="tab-btn active px-4 py-2 rounded-lg bg-blue-100 text-blue-800">المقدمة</button>
+      <button onclick="showSlide(2)" class="tab-btn px-4 py-2 rounded-lg bg-blue-100 text-blue-800">الإدارات الطبية</button>
+      <button onclick="showSlide(3)" class="tab-btn px-4 py-2 rounded-lg bg-blue-100 text-blue-800">المستشفيات</button>
+      <button onclick="showSlide(4)" class="tab-btn px-4 py-2 rounded-lg bg-blue-100 text-blue-800">الملخص النهائي</button>
+    </div>
+
+    <!-- الشريحة 1: المقدمة -->
+    <div id="slide-1" class="slide active-slide bg-white rounded-xl shadow-md p-8">
+      <h2 class="section-title text-2xl font-bold">
+        <i class="fas fa-info-circle ml-2"></i>
+        مقدمة التقرير
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="card bg-blue-50 rounded-lg p-6 text-center">
+          <div class="text-blue-600 text-3xl mb-3">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">الفترة الزمنية</h3>
+          <p class="text-gray-700">يناير وفبراير و مارس 2025</p>
+          <span class="badge badge-primary mt-2">الربع الأول</span>
+        </div>
+        
+        <div class="card bg-green-50 rounded-lg p-6 text-center">
+          <div class="text-green-600 text-3xl mb-3">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">عدد الوحدات</h3>
+          <p class="text-gray-700">11 إدارة طبية</p>
+          <p class="text-gray-700">17 مستشفى</p>
+        </div>
+        
+        <div class="card bg-purple-50 rounded-lg p-6 text-center">
+          <div class="text-purple-600 text-3xl mb-3">
+            <i class="fas fa-file-medical"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">إجمالي التقارير</h3>
+          <p class="text-gray-700">788 تقرير</p>
+          <span class="badge badge-warning mt-2">مقارنة شهرية</span>
+        </div>
+      </div>
+      
+      <div class="bg-gray-50 rounded-lg p-6">
+        <h3 class="font-bold text-lg text-blue-800 mb-3">
+          <i class="fas fa-clipboard-check ml-2"></i>
+          أهداف التقرير
+        </h3>
+        <ul class="list-disc pr-5 space-y-2 text-gray-700">
+          <li>رصد ومتابعة أداء الوحدات الطبية في تسجيل تقارير OVR</li>
+          <li>تحديد المنشآت المتميزة والتي تحتاج لمتابعة</li>
+          <li>تحسين جودة وسلامة الخدمات الطبية المقدمة</li>
+          <li>تعزيز ثقافة الإبلاغ عن الأحداث الطبية</li>
+        </ul>
+        
+        <h3 class="font-bold text-lg text-blue-800 mt-6 mb-3">
+          <i class="fas fa-chart-line ml-2"></i>
+          منهجية العمل
+        </h3>
+        <p class="text-gray-700 leading-relaxed">
+          يعتمد هذا التقرير على البيانات الرسمية المسجلة في نظام OVR خلال الربع الأول من عام 2025.
+          تم تحليل البيانات حسب الأشهر (يناير، فبراير، مارس) لكل منشأة طبية،
+          مع حساب المتوسطات الشهرية
+          وتصنيف المنشآت حسب الأداء.
+        </p>
+      </div>
+    </div>
+
+    <!-- الشريحة 2: الإدارات الطبية -->
+    <div id="slide-2" class="slide bg-white rounded-xl shadow-md p-8">
+      <h2 class="section-title text-2xl font-bold">
+        <i class="fas fa-clinic-medical ml-2"></i>
+        تقارير الإدارات الطبية
+      </h2>
+      
+      <div class="mb-6">
+        <label for="adminSelect" class="block text-lg font-medium text-gray-700 mb-2">اختر إدارة:</label>
+        <select id="adminSelect" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+          <option value="">-- اختر إدارة طبية --</option>
+        </select>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white border border-gray-200 rounded-lg p-4">
+          <h3 class="font-bold text-lg text-center mb-4">التسجيلات الشهرية</h3>
+          <canvas id="adminMonthlyChart"></canvas>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4">
+          <h3 class="font-bold text-lg text-center mb-4">تفاصيل التسجيلات</h3>
+          <div id="adminDetails" class="overflow-auto max-h-80">
+            <!-- سيتم ملء هذا القسم بالبيانات عبر JavaScript -->
+          </div>
+        </div>
+      </div>
+      
+      <div class="mb-8">
+        <h3 class="font-bold text-lg text-blue-800 mb-4">
+          <i class="fas fa-chart-bar ml-2"></i>
+          المقارنة الشهرية بين الإدارات
+        </h3>
+        <canvas id="adminComparisonChart"></canvas>
+      </div>
+    </div>
+
+    <!-- الشريحة 3: المستشفيات -->
+    <div id="slide-3" class="slide bg-white rounded-xl shadow-md p-8">
+      <h2 class="section-title text-2xl font-bold">
+        <i class="fas fa-hospital-alt ml-2"></i>
+        تقارير المستشفيات
+      </h2>
+      
+      <div class="mb-6">
+        <label for="hospitalSelect" class="block text-lg font-medium text-gray-700 mb-2">اختر مستشفى:</label>
+        <select id="hospitalSelect" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+          <option value="">-- اختر مستشفى --</option>
+        </select>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white border border-gray-200 rounded-lg p-4">
+          <h3 class="font-bold text-lg text-center mb-4">التسجيلات الشهرية</h3>
+          <canvas id="hospitalMonthlyChart"></canvas>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-4">
+          <h3 class="font-bold text-lg text-center mb-4">تفاصيل التسجيلات</h3>
+          <div id="hospitalDetails" class="overflow-auto max-h-80">
+            <!-- سيتم ملء هذا القسم بالبيانات عبر JavaScript -->
+          </div>
+        </div>
+      </div>
+      
+      <div class="mb-8">
+        <h3 class="font-bold text-lg text-blue-800 mb-4">
+          <i class="fas fa-chart-bar ml-2"></i>
+          المقارنة الشهرية بين المستشفيات
+        </h3>
+        <canvas id="hospitalComparisonChart"></canvas>
+      </div>
+    </div>
+
+    <!-- الشريحة 4: الملخص النهائي -->
+    <div id="slide-4" class="slide bg-white rounded-xl shadow-md p-8">
+      <h2 class="section-title text-2xl font-bold">
+        <i class="fas fa-chart-pie ml-2"></i>
+        الملخص النهائي والمؤشرات
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div>
+          <h3 class="font-bold text-lg text-blue-800 mb-4">
+            <i class="fas fa-trophy ml-2"></i>
+            أفضل االمنشآت أداءً
+          </h3>
+          <div class="bg-white rounded-lg shadow-sm p-6">
+            <h4 class="font-bold text-md text-green-800 mb-3">الإدارات الطبية:</h4>
+            <ol class="list-decimal pr-5 space-y-3 text-gray-700">
+              <li class="font-bold">إدارة بيلا (متوسط 97.67 تقرير/شهر)</li>
+              <li>إدارة كفر الشيخ (متوسط 22.33 تقرير/شهر)</li>
+              <li>إدارة سيدي سالم (متوسط 17.67 تقرير/شهر)</li>
+            </ol>
+            
+            <h4 class="font-bold text-md text-green-800 mt-6 mb-3">المستشفيات:</h4>
+            <ol class="list-decimal pr-5 space-y-3 text-gray-700">
+              <li class="font-bold">مستشفى دسوق العام (متوسط 24.3 تقرير/شهر)</li>
+              <li>مستشفى كفر الشيخ العام (متوسط 13.7 تقرير/شهر)</li>
+              <li>مستشفى حميات كفر الشيخ (متوسط 10.7 تقرير/شهر)</li>
+            </ol>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="font-bold text-lg text-blue-800 mb-4">
+            <i class="fas fa-exclamation-circle ml-2"></i>
+            منشآت تحتاج متابعة
+          </h3>
+          <div class="bg-white rounded-lg shadow-sm p-6">
+            <h4 class="font-bold text-md text-red-800 mb-3">الإدارات الطبية:</h4>
+            <ul class="list-disc pr-5 space-y-2 text-gray-700">
+              <li>إدارة الحامول (متوسط 0.67 تقرير/شهر)</li>
+              <li>إدارة الرياض (متوسط 1.00 تقرير/شهر)</li>
+              <li>إدارة بلطيم (متوسط 0.33 تقرير/شهر)</li>
+            </ul>
+            
+            <h4 class="font-bold text-md text-red-800 mt-6 mb-3">المستشفيات:</h4>
+            <ul class="list-disc pr-5 space-y-2 text-gray-700">
+              <li>مستشفى جلدية وجذام كفرالشيخ (متوسط 0.7 تقرير/شهر)</li>
+              <li>مستشفى حميات بيلا (متوسط 0.7 تقرير/شهر)</li>
+              <li>مستشفى برج البرلس المركزى (متوسط 2.3 تقرير/شهر)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <h3 class="font-bold text-lg text-blue-800 mb-4">
+            <i class="fas fa-chart-line ml-2"></i>
+            متوسط تقارير الإدارات
+          </h3>
+          <canvas id="adminAverageChart"></canvas>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <h3 class="font-bold text-lg text-blue-800 mb-4">
+            <i class="fas fa-chart-line ml-2"></i>
+            متوسط تقارير المستشفيات
+          </h3>
+          <canvas id="hospitalAverageChart"></canvas>
+        </div>
+      </div>
+      
+      <div class="bg-blue-50 rounded-lg p-6 mt-8">
+        <h3 class="font-bold text-lg text-blue-800 mb-3">
+          <i class="fas fa-lightbulb ml-2"></i>
+          التوصيات والمقترحات
+        </h3>
+        <ul class="list-disc pr-5 space-y-2 text-gray-700">
+          <li>تحفيز الوحدات المتميزة وتكريمها</li>
+          <li>زيادة المتابعة الميدانية للوحدات التي سجلت أقل من 5 تقارير في المتوسط</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- عناصر التحكم -->
+    <div class="flex justify-between mt-8">
+      <button onclick="prevSlide()" class="px-6 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors">
+        <i class="fas fa-arrow-right ml-2"></i> السابق
+      </button>
+      <button onclick="nextSlide()" class="px-6 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors">
+        التالي <i class="fas fa-arrow-left mr-2"></i>
+      </button>
+    </div>
+    
+    <!-- تذييل الصفحة -->
+    <div class="mt-12 pt-6 border-t border-gray-200 text-center text-gray-600 text-sm">
+      <p>مديرية الشئون الصحية بمحافظة كفر الشيخ - إدارة سلامة المرضى</p>
+      <p class="mt-1">جميع الحقوق محفوظة &copy; 2025</p>
+    </div>
+  </div>
+
+  <script>
+    // بيانات الإدارات الطبية
+    const adminData = {
+      "إدارة بيلا": { "يناير": 45, "فبراير": 59, "مارس": 189 },
+      "إدارة دسوق": { "يناير": 12, "فبراير": 15, "مارس": 5 },
+      "إدارة قلين": { "يناير": 4, "فبراير": 14, "مارس": 7 },
+      "إدارة كفر الشيخ": { "يناير": 6, "فبراير": 39, "مارس": 22 },
+      "إدارة مطوبس": { "يناير": 5, "فبراير": 11, "مارس": 1 },
+      "إدارة الحامول": { "يناير": 0, "فبراير": 1, "مارس": 1 },
+      "إدارة سيدي سالم": { "يناير": 0, "فبراير": 29, "مارس": 24 },
+      "إدارة فوة": { "يناير": 0, "فبراير": 3, "مارس": 1 },
+      "إدارة الرياض": { "يناير": 0, "فبراير": 0, "مارس": 3 },
+      "إدارة بلطيم": { "يناير": 0, "فبراير": 0, "مارس": 1 },
+      "إدارة سيدي غازي": { "يناير": 0, "فبراير": 0, "مارس": 2 }
+    };
+
+    // بيانات المستشفيات
+    const hospitalData = {
+      "مستشفى مطوبس المركزى": { "يناير": 7, "فبراير": 7, "مارس": 11 },
+      "مستشفى سيدى غازى": { "يناير": 4, "فبراير": 10, "مارس": 8 },
+      "مستشفى حميات كفر الشيخ": { "يناير": 9, "فبراير": 14, "مارس": 9 },
+      "مستشفي الحامول المركزي": { "يناير": 2, "فبراير": 1, "مارس": 9 },
+      "مستشفى دسوق العام": { "يناير": 29, "فبراير": 26, "مارس": 18 },
+      "مستشفى جلدية وجذام كفرالشيخ": { "يناير": 0, "فبراير": 2, "مارس": 0 },
+      "مستشفى حميات دسوق": { "يناير": 2, "فبراير": 16, "مارس": 5 },
+      "مستشفى حميات بيلا": { "يناير": 0, "فبراير": 0, "مارس": 2 },
+      "مستشفى الرياض المركزي": { "يناير": 3, "فبراير": 8, "مارس": 6 },
+      "مستشفى برج البرلس المركزى": { "يناير": 0, "فبراير": 0, "مارس": 7 },
+      "مستشفى صدر كفرالشيخ": { "يناير": 10, "فبراير": 9, "مارس": 1 },
+      "مستشفى كفر الشيخ العام": { "يناير": 8, "فبراير": 18, "مارس": 15 },
+      "سيدي سالم المركزي": { "يناير": 2, "فبراير": 18, "مارس": 8 },
+      "مستشفى الرمد الرئيسي": { "يناير": 4, "فبراير": 11, "مارس": 5 },
+      "مستشفى حميات مطوبس": { "يناير": 0, "فبراير": 2, "مارس": 7 },
+      "مستشفى فوه المركزي": { "يناير": 0, "فبراير": 2, "مارس": 4 },
+      "مستشفي بيلا المركزي": { "يناير": 7, "فبراير": 5, "مارس": 7 }
+    };
+
+    // تعريف المتغيرات للرسوم البيانية
+    let adminMonthlyChart, hospitalMonthlyChart, adminComparisonChart, hospitalComparisonChart, 
+        adminAverageChart, hospitalAverageChart;
+
+    // تهيئة القوائم المنسدلة
+    const adminSelect = document.getElementById('adminSelect');
+    const hospitalSelect = document.getElementById('hospitalSelect');
+    
+    Object.keys(adminData).forEach(admin => {
+      const option = document.createElement('option');
+      option.value = admin;
+      option.textContent = admin;
+      adminSelect.appendChild(option);
+    });
+    
+    Object.keys(hospitalData).forEach(hospital => {
+      const option = document.createElement('option');
+      option.value = hospital;
+      option.textContent = hospital;
+      hospitalSelect.appendChild(option);
+    });
+
+    // دالة لحساب المتوسط للإدارات (على 3 أشهر)
+    function calculateAdminAverage(admin) {
+      const reports = Object.values(adminData[admin]);
+      const sum = reports.reduce((a, b) => a + b, 0);
+      return sum / 3;
+    }
+
+    // دالة لحساب المتوسط للمستشفيات (للأشهر المسجلة فقط)
+    function calculateHospitalAverage(hospital) {
+      const reports = Object.values(hospitalData[hospital]).filter(count => count > 0);
+      if (reports.length === 0) return 0;
+      const sum = reports.reduce((a, b) => a + b, 0);
+      return sum / reports.length;
+    }
+
+    // إنشاء الرسوم البيانية للإدارات
+    function createAdminCharts() {
+      // رسم المقارنة الشهرية
+      const adminCtx = document.getElementById('adminComparisonChart').getContext('2d');
+      const admins = Object.keys(adminData);
+      const januaryData = admins.map(a => adminData[a]["يناير"] || 0);
+      const februaryData = admins.map(a => adminData[a]["فبراير"] || 0);
+      const marchData = admins.map(a => adminData[a]["مارس"] || 0);
+      
+      adminComparisonChart = new Chart(adminCtx, {
+        type: 'bar',
+        data: {
+          labels: admins,
+          datasets: [
+            { label: 'يناير', data: januaryData, backgroundColor: 'rgba(54, 162, 235, 0.7)' },
+            { label: 'فبراير', data: februaryData, backgroundColor: 'rgba(255, 99, 132, 0.7)' },
+            { label: 'مارس', data: marchData, backgroundColor: 'rgba(75, 192, 192, 0.7)' }
+          ]
+        },
+        options: getChartOptions('مقارنة عدد التقارير الشهرية للإدارات الطبية')
+      });
+      
+      // رسم المتوسطات
+      const adminAvgCtx = document.getElementById('adminAverageChart').getContext('2d');
+      const adminAverages = admins.map(admin => calculateAdminAverage(admin));
+      
+      adminAverageChart = new Chart(adminAvgCtx, {
+        type: 'bar',
+        data: {
+          labels: admins,
+          datasets: [{
+            label: 'متوسط التقارير الشهرية',
+            data: adminAverages,
+            backgroundColor: getBackgroundColors(adminAverages)
+          }]
+        },
+        options: getChartOptions('متوسط عدد التقارير الشهرية للإدارات الطبية', false)
+      });
+    }
+
+    // إنشاء الرسوم البيانية للمستشفيات
+    function createHospitalCharts() {
+      // رسم المقارنة الشهرية
+      const hospitalCtx = document.getElementById('hospitalComparisonChart').getContext('2d');
+      const hospitals = Object.keys(hospitalData);
+      const januaryData = hospitals.map(h => hospitalData[h]["يناير"] || 0);
+      const februaryData = hospitals.map(h => hospitalData[h]["فبراير"] || 0);
+      const marchData = hospitals.map(h => hospitalData[h]["مارس"] || 0);
+      
+      hospitalComparisonChart = new Chart(hospitalCtx, {
+        type: 'bar',
+        data: {
+          labels: hospitals,
+          datasets: [
+            { label: 'يناير', data: januaryData, backgroundColor: 'rgba(54, 162, 235, 0.7)' },
+            { label: 'فبراير', data: februaryData, backgroundColor: 'rgba(255, 99, 132, 0.7)' },
+            { label: 'مارس', data: marchData, backgroundColor: 'rgba(75, 192, 192, 0.7)' }
+          ]
+        },
+        options: getChartOptions('مقارنة عدد التقارير الشهرية للمستشفيات')
+      });
+      
+      // رسم المتوسطات
+      const hospitalAvgCtx = document.getElementById('hospitalAverageChart').getContext('2d');
+      const hospitalAverages = hospitals.map(hospital => calculateHospitalAverage(hospital));
+      
+      hospitalAverageChart = new Chart(hospitalAvgCtx, {
+        type: 'bar',
+        data: {
+          labels: hospitals,
+          datasets: [{
+            label: 'متوسط التقارير الشهرية (للأشهر المسجلة فقط)',
+            data: hospitalAverages,
+            backgroundColor: getBackgroundColors(hospitalAverages)
+          }]
+        },
+        options: getChartOptions('متوسط عدد التقارير الشهرية للمستشفيات', false)
+      });
+    }
+
+    // دالة مساعدة لإعداد خيارات الرسم البياني
+    function getChartOptions(title, showLegend = true) {
+      return {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: title, font: { size: 16 } },
+          legend: { position: 'top', rtl: true, display: showLegend }
+        },
+        scales: {
+          x: { ticks: { font: { size: 10 } } },
+          y: { beginAtZero: true, title: { display: true, text: 'عدد التقارير' } }
+        }
+      };
+    }
+
+    // دالة مساعدة لتحديد الألوان حسب القيمة
+    function getBackgroundColors(values) {
+      return values.map(val => {
+        if (val >= 10) return 'rgba(75, 192, 192, 0.7)';
+        if (val >= 5) return 'rgba(255, 206, 86, 0.7)';
+        return 'rgba(255, 99, 132, 0.7)';
+      });
+    }
+
+    // عرض تفاصيل الإدارة المحددة
+    adminSelect.addEventListener('change', function() {
+      const selectedAdmin = this.value;
+      if (!selectedAdmin) return;
+      
+      const adminInfo = adminData[selectedAdmin];
+      updateMonthlyChart('adminMonthlyChart', adminMonthlyChart, selectedAdmin, adminInfo);
+      displayDetails('adminDetails', selectedAdmin, adminInfo, calculateAdminAverage(selectedAdmin), true);
+    });
+
+    // عرض تفاصيل المستشفى المحدد
+    hospitalSelect.addEventListener('change', function() {
+      const selectedHospital = this.value;
+      if (!selectedHospital) return;
+      
+      const hospitalInfo = hospitalData[selectedHospital];
+      updateMonthlyChart('hospitalMonthlyChart', hospitalMonthlyChart, selectedHospital, hospitalInfo);
+      displayDetails('hospitalDetails', selectedHospital, hospitalInfo, calculateHospitalAverage(selectedHospital), false);
+    });
+
+    // تحديث الرسم البياني الشهري
+    function updateMonthlyChart(canvasId, chartInstance, name, data) {
+      const ctx = document.getElementById(canvasId).getContext('2d');
+      
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+      
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['يناير', 'فبراير', 'مارس'],
+          datasets: [{
+            label: `عدد التقارير - ${name}`,
+            data: [data["يناير"] || 0, data["فبراير"] || 0, data["مارس"] || 0],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 2,
+            tension: 0.1,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: `التسجيلات الشهرية - ${name}`,
+              font: { size: 14 }
+            }
+          },
+          scales: {
+            y: { beginAtZero: true, title: { display: true, text: 'عدد التقارير' } }
+          }
+        }
+      });
+    }
+
+    // عرض التفاصيل في الجدول
+    function displayDetails(containerId, name, data, average, isAdmin) {
+      const detailsContainer = document.getElementById(containerId);
+      let html = `
+        <div class="mb-4">
+          <h3 class="text-xl font-bold text-blue-800 mb-2">${name}</h3>
+          <div class="bg-blue-50 rounded-lg p-4 mb-3">
+            <p class="font-bold">المتوسط الشهري: <span class="text-blue-600">${average.toFixed(2)} تقرير</span></p>
+            <p class="text-sm text-gray-600">${isAdmin ? '(محسوب على 3 أشهر)' : '(محسوب فقط للأشهر المسجلة)'}</p>
+          </div>
+          
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="p-2 border text-right">الشهر</th>
+                <th class="p-2 border text-right">عدد التقارير</th>
+                <th class="p-2 border text-right">الحالة</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+      
+      Object.entries(data).forEach(([month, count]) => {
+        const status = count > 0 ? 
+          `<span class="text-green-600 font-bold">تم التسجيل</span>` : 
+          `<span class="text-red-600 font-bold">لم يتم التسجيل</span>`;
+        
+        html += `
+          <tr class="hover:bg-gray-50">
+            <td class="p-2 border">${month}</td>
+            <td class="p-2 border">${count}</td>
+            <td class="p-2 border">${status}</td>
+          </tr>
+        `;
+      });
+      
+      html += `
+            </tbody>
+          </table>
+        </div>
+      `;
+      
+      detailsContainer.innerHTML = html;
+    }
+
+    // عرض الشرائح
+    let currentSlide = 1;
+    const totalSlides = 4;
+
+    function showSlide(n) {
+      document.querySelectorAll('.slide').forEach(slide => {
+        slide.classList.remove('active-slide');
+      });
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      document.getElementById(`slide-${n}`).classList.add('active-slide');
+      document.querySelectorAll('.tab-btn')[n-1].classList.add('active');
+      currentSlide = n;
+      
+      // عند عرض شريحة الإدارات أو المستشفيات، قم بإنشاء الرسوم البيانية
+      if (n === 2 && !adminComparisonChart) {
+        createAdminCharts();
+        adminSelect.dispatchEvent(new Event('change'));
+      } else if (n === 3 && !hospitalComparisonChart) {
+        createHospitalCharts();
+        hospitalSelect.dispatchEvent(new Event('change'));
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    // تهيئة العرض عند تحميل الصفحة
+    document.addEventListener('DOMContentLoaded', function() {
+      showSlide(1);
+    });
+  </script>
+</body>
+</html>
